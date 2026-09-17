@@ -1,0 +1,563 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "2.1 Create `src/services/ticketService.ts` with all five async methods (`listTickets`, `getTicket`, `createTicket`, `updateTicket`, `addComment`) backed by an in-memory array": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459490961
+      },
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459507240
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789460447327
+      }
+    ],
+    "2.2 Seed the in-memory store with 15 mock `Ticket` objects on module load": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459491160
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789460456122
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789460692115
+      }
+    ],
+    "3.1 Create `src/context/ticketReducer.ts` with the `TicketAction` union and pure reducer handling `LOAD_TICKETS`, `ADD_TICKET`, `UPDATE_TICKET`, `ADD_COMMENT`, `ADD_EVENT`, `SET_LOADING`, and `SET_ERROR`": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459491610
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789460702299
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789460760975
+      }
+    ],
+    "3.2 Create `src/context/TicketContext.tsx` with `TicketProvider` that initialises state, fetches from `ticketService.listTickets()` on mount, and wraps children": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459491799
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789460767726
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789461065705
+      }
+    ],
+    "4.1 Implement `src/components/ui/Badge.tsx`": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459491973
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789461071894
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789461285600
+      }
+    ],
+    "4.3 Implement `src/components/ui/Toast.tsx`": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459492098
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789461077373
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789461290739
+      }
+    ],
+    "4.4 Implement `src/components/ui/Modal.tsx`": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459492247
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789461082333
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789461296736
+      }
+    ],
+    "4.5 Implement `src/components/ui/LoadingSkeleton.tsx` and `src/components/ui/EmptyState.tsx`": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459492399
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789461087194
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789461302825
+      }
+    ],
+    "5.1 Create `src/components/layout/Sidebar.tsx` and `src/components/layout/AppShell.tsx`": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459492561
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789461308695
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789461893930
+      }
+    ],
+    "5.2 Create `src/components/layout/PageHeader.tsx` and all page stubs": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459492716
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789461899498
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789462295936
+      }
+    ],
+    "6.1 Create `src/components/dashboard/StatCard.tsx` and implement the four KPI stat cards in `DashboardPage.tsx`": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459492897
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789462304880
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789462568366
+      }
+    ],
+    "6.3 Create `src/components/dashboard/PriorityBreakdown.tsx`": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459493045
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789462583222
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789462847812
+      }
+    ],
+    "6.5 Create `src/components/dashboard/RecentTickets.tsx`": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459493190
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789462865926
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789463848894
+      }
+    ],
+    "7.1 Implement `src/hooks/useFilterState.ts`": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459493314
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789462308914
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789462573088
+      }
+    ],
+    "7.3 Implement `src/hooks/useTickets.ts`": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459493443
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789462587345
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789462854771
+      }
+    ],
+    "7.6 Create `src/components/tickets/TicketFilters.tsx`, `TicketSearch.tsx`, and `Pagination.tsx`": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459493598
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789462871265
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789463855563
+      }
+    ],
+    "7.7 Create `src/components/tickets/TicketRow.tsx` and `TicketTable.tsx`": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459493736
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789462876771
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789463861182
+      }
+    ],
+    "7.9 Assemble `TicketsPage.tsx`": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459493865
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789463872181
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789464959562
+      }
+    ],
+    "8. Checkpoint — Ensure all tests pass": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459493998
+      }
+    ],
+    "9.1 Create `src/components/tickets/NewTicketModal.tsx`": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459494157
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789465048649
+      }
+    ],
+    "9.4 Wire \"New Ticket\" button in `TicketsPage.tsx` to open `NewTicketModal`": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459494327
+      }
+    ],
+    "10.1 Implement `src/hooks/useTicket.ts`": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459494482
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789463877990
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789464968295
+      }
+    ],
+    "10.2 Create `src/components/ticket-detail/TicketDetailHeader.tsx`": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459494611
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789464982935
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789465043597
+      }
+    ],
+    "10.4 Create `src/components/ticket-detail/TicketDetailSidebar.tsx` (read-only fields only for now)": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459494746
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789465053702
+      }
+    ],
+    "10.6 Assemble `TicketDetailPage.tsx`": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459494893
+      }
+    ],
+    "11.1 Add `formatRelative` utility to `src/utils/time.ts`": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459495019
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789462313106
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789462577342
+      }
+    ],
+    "11.2 Create `src/components/ticket-detail/TimelineComment.tsx` and `TimelineEvent.tsx`": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459495156
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789462591733
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789462860027
+      }
+    ],
+    "11.5 Create `src/components/ticket-detail/Timeline.tsx`": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459495300
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789462883362
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789463866075
+      }
+    ],
+    "11.6 Wire `Timeline` into `TicketDetailPage` left column": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459495429
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789463882638
+      },
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789464973218
+      }
+    ],
+    "12.1 Create `src/components/ticket-detail/AddComment.tsx`": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459495621
+      }
+    ],
+    "12.3 Wire `AddComment` into `TicketDetailPage` (pinned to bottom of Timeline section)": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459495763
+      }
+    ],
+    "13.1 Upgrade `TicketDetailSidebar.tsx` to render Status, Priority, and Assignee as `<select>` elements": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459495958
+      }
+    ],
+    "14. Checkpoint — Ensure all tests pass": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459496108
+      }
+    ],
+    "15.1 Audit and apply global focus indicators": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459496245
+      }
+    ],
+    "15.2 Verify ARIA attributes across all components": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459496364
+      }
+    ],
+    "15.3 Verify responsive behaviour": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459496499
+      }
+    ],
+    "16. Final checkpoint — Ensure all tests pass": [
+      {
+        "executionId": "306843c6-db5e-4924-afab-4689ce5d4222",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789459496629
+      }
+    ],
+    "2. Implement the data layer": [
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789460692275
+      }
+    ],
+    "3. Implement the global store": [
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789461065878
+      }
+    ],
+    "4. Build shared UI primitives": [
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789461302995
+      }
+    ],
+    "5. Build app shell and routing": [
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789462296172
+      }
+    ],
+    "6. Implement Dashboard page": [
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789463849045
+      }
+    ],
+    "7. Implement Ticket List view": [
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789464959768
+      }
+    ],
+    "11. Implement Activity Timeline": [
+      {
+        "executionId": "3d32b56f-a9fd-4e7c-a96a-6d96abe50940",
+        "chatSessionId": "sess_91a7369b-0d51-4459-877b-2d01d6bc745b",
+        "timestamp": 1789464973448
+      }
+    ]
+  }
+}
