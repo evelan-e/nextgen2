@@ -53,3 +53,29 @@ export interface FilterState {
   sortDirection: 'asc' | 'desc';
   page: number;
 }
+
+export interface HistoryTicket {
+  id: string;
+  subject: string;
+  customerName: string;
+  customerEmail: string;
+  priority: Priority;
+  status: 'Resolved' | 'Closed';
+  assignee: string;
+  description: string;
+  createdAt: string;        // ISO 8601
+  updatedAt: string;        // ISO 8601
+  tags: string[];
+  comments: Comment[];
+  events: SystemEvent[];
+  resolvedAt: string;       // ISO 8601 — UTC timestamp of move
+  resolvedBy: string;       // assignee name or "unassigned"
+}
+
+export interface HistoryFilter {
+  fromDate: string;         // ISO date string or '' for no lower bound
+  toDate: string;           // ISO date string or '' for no upper bound
+  priority: Priority | '';
+  assignee: string;
+  search: string;
+}

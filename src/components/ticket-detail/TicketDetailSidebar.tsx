@@ -1,9 +1,11 @@
 ﻿import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import type { Priority, Status, Ticket } from '../../types';
 import { Toast } from '../ui/Toast';
 import { formatDateTime } from '../../utils/time';
 import { useTicketContext } from '../../context/TicketContext';
 import ticketService, { generateEventId } from '../../services/ticketService';
+import ticketHistoryService from '../../services/ticketHistoryService';
 
 const STATUS_OPTIONS: Status[] = ['Open', 'In Progress', 'Waiting on Customer', 'Resolved', 'Closed'];
 const PRIORITY_OPTIONS: Priority[] = ['Low', 'Medium', 'High', 'Urgent'];
@@ -15,6 +17,7 @@ interface TicketDetailSidebarProps {
 
 export default function TicketDetailSidebar({ ticket }: TicketDetailSidebarProps) {
   const { dispatch } = useTicketContext();
+  const navigate = useNavigate();
   const [toast, setToast] = useState<string | null>(null);
 
   const applyChange = async (field: string, oldValue: string, newValue: string) => {
@@ -35,10 +38,18 @@ export default function TicketDetailSidebar({ ticket }: TicketDetailSidebarProps
     setToast(`${field.charAt(0).toUpperCase() + field.slice(1)} updated`);
   };
 
-  const handleStatusChange = (newStatus: Status) => {
+  const handleStatusChange = async (newStatus: Status) => {
     if (newStatus === ticket.status) return;
     if (newStatus === 'Resolved' || newStatus === 'Closed') {
       if (!confirm(`Mark this ticket as "${newStatus}"?`)) return;
+      try {
+        await ticketHistoryService.moveTicketToHistory(ticket.id, ticket.assignee, newStatus);
+        dispatch({ type: 'REMOVE_TICKET', ticketId: ticket.id });
+        navigate('/tickets');
+      } catch (err) {
+        setToast(err instanceof Error ? err.message : 'Failed to resolve ticket');
+      }
+      return;
     }
     applyChange('status', ticket.status, newStatus);
   };

@@ -1,16 +1,10 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import PageHeader from '../components/layout/PageHeader';
 import StatCard from '../components/dashboard/StatCard';
 import PriorityBreakdown from '../components/dashboard/PriorityBreakdown';
 import { RecentTickets } from '../components/dashboard/RecentTickets';
 import { useTicketContext } from '../context/TicketContext';
-
-/**
- * Returns true when the ISO string falls on today's calendar date.
- */
-function isToday(iso: string): boolean {
-  return new Date(iso).toDateString() === new Date().toDateString();
-}
+import { supabase } from '../lib/supabase';
 
 /**
  * Dashboard overview page — KPI stat cards.
@@ -30,23 +24,33 @@ export default function DashboardPage() {
     [tickets]
   );
 
-  const resolvedTodayCount = useMemo(
-    () =>
-      tickets.filter(
-        t => t.status === 'Resolved' && isToday(t.updatedAt)
-      ).length,
-    [tickets]
-  );
+  const [resolvedTodayCount, setResolvedTodayCount] = useState(0);
+
+  useEffect(() => {
+    // Start of today in UTC
+    const startOfToday = new Date();
+    startOfToday.setHours(0, 0, 0, 0);
+
+    supabase
+      .from('ticket_history')
+      .select('id', { count: 'exact', head: true })
+      .gte('resolved_at', startOfToday.toISOString())
+      .then(({ count }) => {
+        if (count !== null) setResolvedTodayCount(count);
+      });
+  }, []);
 
   const avgAgeHrs = useMemo(() => {
-    const openTickets = tickets.filter(t => t.status === 'Open');
-    if (openTickets.length === 0) return 'N/A';
-    const totalHrs = openTickets.reduce(
+    const activeTickets = tickets.filter(
+      t => t.status !== 'Resolved' && t.status !== 'Closed'
+    );
+    if (activeTickets.length === 0) return 'N/A';
+    const totalHrs = activeTickets.reduce(
       (sum, t) =>
         sum + (Date.now() - new Date(t.createdAt).getTime()) / 3_600_000,
       0
     );
-    return `${(totalHrs / openTickets.length).toFixed(1)} hrs`;
+    return `${(totalHrs / activeTickets.length).toFixed(1)} hrs`;
   }, [tickets]);
 
   return (
@@ -72,7 +76,7 @@ export default function DashboardPage() {
           <StatCard
             title="Avg Age (Open)"
             value={avgAgeHrs}
-            description="Mean hours since creation"
+            description="Mean age of active tickets"
           />
         </div>
 

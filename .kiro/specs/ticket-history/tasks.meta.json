@@ -1,0 +1,572 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Add `HistoryTicket` interface with all `Ticket` fields plus `resolvedAt: string` and `resolvedBy: string`; constrain `status` to `'Resolved' | 'Closed'`": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686007637
+      },
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686023328
+      },
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686062104
+      }
+    ],
+    "1.2 Add `HistoryFilter` interface with fields `fromDate: string`, `toDate: string`, `priority: Priority | ''`, `assignee: string`, `search: string`": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686007778
+      },
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686023811
+      },
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686062677
+      }
+    ],
+    "2.1 Add `REMOVE_TICKET` action (`{ type: 'REMOVE_TICKET'; ticketId: string }`) to the `TicketAction` union and implement its reducer case to filter out the ticket by ID": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686007888
+      },
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686068507
+      },
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686433987
+      }
+    ],
+    "2.3 Add `REOPEN_TICKET` action (`{ type: 'REOPEN_TICKET'; payload: Ticket }`) to the `TicketAction` union and implement its reducer case to prepend the ticket to the active list": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686008010
+      },
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686069394
+      },
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686434700
+      }
+    ],
+    "3.1 Add the `HistoryRow` internal interface (snake_case Supabase columns) and `rowToHistoryTicket` mapping function; implement `moveTicketToHistory(ticketId, assignee)` which calls `supabase.rpc('move_ticket_to_history', ...)` with `resolved_at` and `resolved_by` (defaulting to `'unassigned'` when assignee is blank)": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686008229
+      },
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686070438
+      },
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686436384
+      }
+    ],
+    "3.3 Implement `listHistory(filter)` — builds a Supabase query with `.order('resolved_at', { ascending: false }).limit(100)` and applies all non-empty `HistoryFilter` fields as AND conditions; `toDate` appends `T23:59:59Z`; `search` uses `.or('subject.ilike.%…%,customer_name.ilike.%…%')`": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686008358
+      },
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686450658
+      },
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686513333
+      }
+    ],
+    "3.5 Implement `getHistoryTicket(id)` — fetches a single record by primary key; returns `undefined` on PGRST116 (not found), throws on other errors": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686008513
+      },
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686520842
+      }
+    ],
+    "3.6 Implement `listAssignees()` — selects the `assignee` column from `ticket_history`, deduplicates client-side, and returns a sorted array of unique non-empty strings": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686008670
+      },
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686522168
+      }
+    ],
+    "3.8 Implement `reopenTicket(ticketId, assignee)` — calls `supabase.rpc('reopen_ticket', { p_ticket_id, p_assignee, p_reason: '' })` and throws on error": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686008792
+      },
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686522507
+      }
+    ],
+    "4. Checkpoint — Ensure all tests pass, ask the user if questions arise.": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686008930
+      },
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686539727
+      }
+    ],
+    "5.1 In the status filter step, when `filter.status === ''` add a secondary filter that excludes tickets with `status === 'Resolved'` or `status === 'Closed'`; keep existing branch for explicit status selections unchanged": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686009107
+      },
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686070991
+      },
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686437453
+      }
+    ],
+    "6.1 Mirror `useFilterState` — parse `HistoryFilter` fields from URL search params (with safe fallbacks), write back via `useSearchParams`; validate that `fromDate ≤ toDate` and return a `dateError: string | null` as the third tuple element": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686009220
+      },
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686451414
+      },
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686514741
+      }
+    ],
+    "7.1 Implement `useHistoryTickets(filter: HistoryFilter)` — manages `rows`, `loading`, and `error` state; calls `ticketHistoryService.listHistory(filter)` on filter changes; debounces `filter.search` changes by 300 ms while firing immediately for all other filter field changes; fetches `listAssignees()` separately and returns it alongside main results": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686009328
+      },
+      {
+        "executionId": "be312b32-0ce9-4225-a205-d2edee7b2e6c",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789690231157
+      },
+      {
+        "executionId": "be312b32-0ce9-4225-a205-d2edee7b2e6c",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789690331453
+      }
+    ],
+    "8.1 Render a single `<tr>` with columns: Ticket ID, Subject, Customer Name, Priority (using `Badge`), Status (using `Badge`), Assignee, Resolved At (formatted via `formatDateTime`), Resolved By; navigate to `/history/${ticket.id}` via `useNavigate` on row click; add `cursor-pointer hover:bg-gray-50` row styles; include an `aria-label` on the row": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686009464
+      },
+      {
+        "executionId": "be312b32-0ce9-4225-a205-d2edee7b2e6c",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789690233475
+      },
+      {
+        "executionId": "be312b32-0ce9-4225-a205-d2edee7b2e6c",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789690333518
+      }
+    ],
+    "9.1 Render a `<table>` with a `<thead>` containing all eight column headers; map `rows` to `<HistoryRow>` components; when `loading` is true render exactly 5 `<LoadingSkeleton>` rows spanning all columns; when not loading and `rows` is empty delegate to `<EmptyState>`": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686009621
+      },
+      {
+        "executionId": "be312b32-0ce9-4225-a205-d2edee7b2e6c",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789690652258
+      },
+      {
+        "executionId": "be312b32-0ce9-4225-a205-d2edee7b2e6c",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789690999198
+      }
+    ],
+    "10.1 Render a `from` date `<input type=\"date\">` and a `to` date `<input type=\"date\">`; when `dateError` is non-null display it as an inline validation message below the date inputs using a red text style; render a priority `<select>` with options `All | Low | Medium | High | Urgent`; render an assignee `<select>` populated from `assigneeOptions` with an \"All\" default": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686009763
+      },
+      {
+        "executionId": "be312b32-0ce9-4225-a205-d2edee7b2e6c",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789690235544
+      },
+      {
+        "executionId": "be312b32-0ce9-4225-a205-d2edee7b2e6c",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789690335317
+      }
+    ],
+    "10.2 Add the text search `<input>` to `HistoryFilters` with debounce handled by the parent hook (the component just calls `onFilterChange({ search: value })` on every keystroke; debouncing happens in `useHistoryTickets`)": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686009924
+      },
+      {
+        "executionId": "be312b32-0ce9-4225-a205-d2edee7b2e6c",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789690336907
+      }
+    ],
+    "11.1 Mirror `TicketDetailHeader` structure: render the ticket subject as the page title, a \"← Back to History\" link that navigates to `/history` (restoring query params from `location.state?.from` if present), and a metadata row beneath the subject showing `resolvedAt` (formatted) and `resolvedBy`": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686010041
+      },
+      {
+        "executionId": "be312b32-0ce9-4225-a205-d2edee7b2e6c",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789690237655
+      },
+      {
+        "executionId": "be312b32-0ce9-4225-a205-d2edee7b2e6c",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789690338397
+      }
+    ],
+    "12.1 Render all ticket fields as plain text (no `<select>` controls): Status (using `Badge`), Priority (using `Badge`), Assignee, Customer name and email, Created, Resolved At, Resolved By, Tags; render a \"Reopen\" button at the top of the sidebar that calls an `onReopen` callback prop": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686010179
+      },
+      {
+        "executionId": "be312b32-0ce9-4225-a205-d2edee7b2e6c",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789690238756
+      },
+      {
+        "executionId": "be312b32-0ce9-4225-a205-d2edee7b2e6c",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789690340041
+      }
+    ],
+    "13.1 Wrap the existing `Modal` component; render an assignee `<select>` using the same `ASSIGNEE_OPTIONS` list as `TicketDetailSidebar` (excluding the empty option — selection is required); render an optional `<textarea>` for the reason (max 1000 characters with visible character count); display a validation error adjacent to the assignee dropdown when form is submitted without a selection": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686010321
+      },
+      {
+        "executionId": "be312b32-0ce9-4225-a205-d2edee7b2e6c",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789690654598
+      },
+      {
+        "executionId": "be312b32-0ce9-4225-a205-d2edee7b2e6c",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789691001587
+      }
+    ],
+    "13.2 On submit: call `ticketHistoryService.reopenTicket(ticket.id, assignee)`, then dispatch `REOPEN_TICKET` to `TicketContext`; if a reason was entered call `ticketService.addComment` to add an internal comment on the reopened ticket; on success call `onSuccess()`; on failure display an inline error message; disable the submit button and assignee dropdown while the operation is in progress": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686010448
+      },
+      {
+        "executionId": "be312b32-0ce9-4225-a205-d2edee7b2e6c",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789691003108
+      }
+    ],
+    "14. Checkpoint — Ensure all tests pass, ask the user if questions arise.": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686010633
+      },
+      {
+        "executionId": "be312b32-0ce9-4225-a205-d2edee7b2e6c",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789691009180
+      }
+    ],
+    "15.1 Compose `useHistoryFilter`, `useHistoryTickets`, `HistoryFilters`, `HistoryTable`, and `Pagination`; pass `dateError` to `HistoryFilters`; render an inline error message when `useHistoryTickets` returns a non-null `error`; render within the existing page layout pattern using `PageHeader`": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686010758
+      },
+      {
+        "executionId": "be312b32-0ce9-4225-a205-d2edee7b2e6c",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789691016149
+      },
+      {
+        "executionId": "91076ed8-e21d-4c5e-8917-9da45fcae378",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789695088250
+      }
+    ],
+    "16.1 Read `:id` from `useParams`; fetch the history ticket via `ticketHistoryService.getHistoryTicket(id)` on mount; render `HistoryDetailHeader`, `Timeline` (read-only, no new comment form), and `HistoryDetailSidebar`; when `onReopen` is triggered open `ReopenModal`; after `onSuccess` navigate to `/history`": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686010944
+      },
+      {
+        "executionId": "be312b32-0ce9-4225-a205-d2edee7b2e6c",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789691018440
+      },
+      {
+        "executionId": "91076ed8-e21d-4c5e-8917-9da45fcae378",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789695090754
+      }
+    ],
+    "16.2 Render a not-found `EmptyState` with a \"← Back to History\" link when `getHistoryTicket` returns `undefined`": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686011080
+      },
+      {
+        "executionId": "91076ed8-e21d-4c5e-8917-9da45fcae378",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789695103126
+      }
+    ],
+    "17.1 Add an `IconArchive` inline SVG function (heroicons archive-box style) and append `{ path: '/history', label: 'History', Icon: IconArchive, end: false }` to `NAV_ITEMS`; no other structural changes needed — existing `NavLink` rendering handles collapsed mode and active highlighting automatically": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686011223
+      },
+      {
+        "executionId": "be312b32-0ce9-4225-a205-d2edee7b2e6c",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789691020580
+      },
+      {
+        "executionId": "91076ed8-e21d-4c5e-8917-9da45fcae378",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789695092882
+      }
+    ],
+    "18.1 Import `HistoryPage` and `HistoryDetailPage`; add `<Route path=\"/history\" element={<HistoryPage />} />` and `<Route path=\"/history/:id\" element={<HistoryDetailPage />} />` inside the existing `<Routes>` block within `<AppShell>`": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686011362
+      },
+      {
+        "executionId": "be312b32-0ce9-4225-a205-d2edee7b2e6c",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789691021931
+      },
+      {
+        "executionId": "91076ed8-e21d-4c5e-8917-9da45fcae378",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789695094589
+      }
+    ],
+    "19.1 Import `ticketHistoryService` and the `useTicketContext` dispatch; modify `handleStatusChange` so that when `newStatus === 'Resolved' || 'Closed'`, after the user confirms, it calls `ticketHistoryService.moveTicketToHistory(ticket.id, ticket.assignee)` via an async flow: on success dispatch `REMOVE_TICKET` and navigate to `/tickets`; on failure show a Toast error and leave the ticket status unchanged (do NOT call `ticketService.updateTicket` for terminal statuses)": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686011507
+      },
+      {
+        "executionId": "be312b32-0ce9-4225-a205-d2edee7b2e6c",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789691024669
+      },
+      {
+        "executionId": "91076ed8-e21d-4c5e-8917-9da45fcae378",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789695096578
+      }
+    ],
+    "20. Final Checkpoint — Ensure all tests pass, ask the user if questions arise.": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686011639
+      },
+      {
+        "executionId": "91076ed8-e21d-4c5e-8917-9da45fcae378",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789695934121
+      }
+    ],
+    "1. Add new TypeScript types to `src/types/index.ts`": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686062830
+      }
+    ],
+    "2. Extend `src/context/ticketReducer.ts` with two new actions": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686434926
+      }
+    ],
+    "5. Update `src/hooks/useTickets.ts` default filter": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686437686
+      }
+    ],
+    "6. Create `src/hooks/useHistoryFilter.ts`": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686514966
+      }
+    ],
+    "3. Create `src/services/ticketHistoryService.ts`": [
+      {
+        "executionId": "b7d58951-e7fe-4715-a4ee-25e6bcf451bb",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789686522736
+      }
+    ],
+    "7. Create `src/hooks/useHistoryTickets.ts`": [
+      {
+        "executionId": "be312b32-0ce9-4225-a205-d2edee7b2e6c",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789690331634
+      }
+    ],
+    "8. Create `src/components/history/HistoryRow.tsx`": [
+      {
+        "executionId": "be312b32-0ce9-4225-a205-d2edee7b2e6c",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789690334036
+      }
+    ],
+    "10. Create `src/components/history/HistoryFilters.tsx`": [
+      {
+        "executionId": "be312b32-0ce9-4225-a205-d2edee7b2e6c",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789690337090
+      }
+    ],
+    "11. Create `src/components/history/HistoryDetailHeader.tsx`": [
+      {
+        "executionId": "be312b32-0ce9-4225-a205-d2edee7b2e6c",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789690338556
+      }
+    ],
+    "12. Create `src/components/history/HistoryDetailSidebar.tsx`": [
+      {
+        "executionId": "be312b32-0ce9-4225-a205-d2edee7b2e6c",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789690340177
+      }
+    ],
+    "9. Create `src/components/history/HistoryTable.tsx`": [
+      {
+        "executionId": "be312b32-0ce9-4225-a205-d2edee7b2e6c",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789690999433
+      }
+    ],
+    "13. Create `src/components/history/ReopenModal.tsx`": [
+      {
+        "executionId": "be312b32-0ce9-4225-a205-d2edee7b2e6c",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789691003219
+      }
+    ],
+    "15. Create `src/pages/HistoryPage.tsx`": [
+      {
+        "executionId": "91076ed8-e21d-4c5e-8917-9da45fcae378",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789695088590
+      }
+    ],
+    "17. Update `src/components/layout/Sidebar.tsx`": [
+      {
+        "executionId": "91076ed8-e21d-4c5e-8917-9da45fcae378",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789695093078
+      }
+    ],
+    "18. Update `src/App.tsx`": [
+      {
+        "executionId": "91076ed8-e21d-4c5e-8917-9da45fcae378",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789695094892
+      }
+    ],
+    "19. Update `src/components/ticket-detail/TicketDetailSidebar.tsx`": [
+      {
+        "executionId": "91076ed8-e21d-4c5e-8917-9da45fcae378",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789695096763
+      }
+    ],
+    "16. Create `src/pages/HistoryDetailPage.tsx`": [
+      {
+        "executionId": "91076ed8-e21d-4c5e-8917-9da45fcae378",
+        "chatSessionId": "sess_e71a14e2-8dc1-410d-985e-c7a01655fcdc",
+        "timestamp": 1789695103351
+      }
+    ]
+  }
+}

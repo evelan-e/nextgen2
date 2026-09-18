@@ -34,6 +34,11 @@ export function useTickets(filter: FilterState): UseTicketsResult {
     // 1. Status filter
     if (filter.status !== '') {
       result = result.filter(t => t.status === filter.status);
+    } else {
+      // Default: exclude terminal statuses
+      result = result.filter(
+        t => t.status !== 'Resolved' && t.status !== 'Closed'
+      );
     }
 
     // 2. Priority filter

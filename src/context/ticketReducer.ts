@@ -27,7 +27,9 @@ export type TicketAction =
   | { type: 'ADD_COMMENT'; ticketId: string; comment: Comment }
   | { type: 'ADD_EVENT'; ticketId: string; event: SystemEvent }
   | { type: 'SET_LOADING'; payload: boolean }
-  | { type: 'SET_ERROR'; payload: string };
+  | { type: 'SET_ERROR'; payload: string }
+  | { type: 'REMOVE_TICKET'; ticketId: string }
+  | { type: 'REOPEN_TICKET'; payload: Ticket };
 
 // ---------------------------------------------------------------------------
 // Pure reducer
@@ -84,6 +86,19 @@ export function ticketReducer(
 
     case 'SET_ERROR':
       return { ...state, error: action.payload, loading: false };
+
+    case 'REMOVE_TICKET':
+      return {
+        ...state,
+        tickets: state.tickets.filter(t => t.id !== action.ticketId),
+      };
+
+    case 'REOPEN_TICKET':
+      // Prepend so the ticket appears at the top of the active list
+      return {
+        ...state,
+        tickets: [action.payload, ...state.tickets],
+      };
 
     default:
       return state;
